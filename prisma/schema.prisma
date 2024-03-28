@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = process.env.DATABASE_URL
+}
+
+model Show {
+  id     String @id @default(uuid())
+  title  String
+  poster String
+  url    String
+}
+
+model Movie {
+  id           String    @id @default(uuid())
+  title        String
+  detail       String
+  releaseDate  DateTime? @default(now())
+  genre        String[]
+  duration     Int?
+  posterUrl    String?
+  backdropUrl  String?
+  down480      String?
+  down720      String?
+  down1080     String?
+  down4k       String?
+}
